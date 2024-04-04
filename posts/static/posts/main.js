@@ -27,7 +27,22 @@ const likeUnlikePosts = ()=>{
     likeUnlikeForms.forEach(forms=> forms.addEventListener('submit', e=>{
         e.preventDefault()
         const clickedId = e.target.getAttribute('data-forms-id')
+        const clickedBtn = document.getElementById(`like-unlike-${clickedId}`)
 
+        $.ajax({
+            type: 'POST',
+            url: "/like-unlike/",
+            data: {
+                'csrfmiddlewaretoken': csrftoken,
+                'pk': clickedId,
+            },
+            success: function(response){
+                console.log(response)
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
     }))
 }
 
@@ -57,14 +72,14 @@ const getData = () => {
                                 </div>
                                 <div class="col-2">
                                     <form class="like-unlike-forms" data-form-id="${el.id}">
-
-                                        <button href="#" class="btn btn-primary" id="like-unlike-${el.id}>${el.liked ? `Unlike (${el.count})`: `Like (${el.count})`}</button>
+                                        <button href="#" class="btn btn-primary" id="like-unlike-${el.id}">${el.liked ? `Unlike (${el.count})`: `Like (${el.count})`}</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     `
                 });
+                likeUnlikePosts()
             }, 100)
             console.log(response.size)
             if (response.size === 0){
