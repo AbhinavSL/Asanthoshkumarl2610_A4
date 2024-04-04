@@ -38,7 +38,7 @@ def like_unlike_post(request):
         else:
             liked = True
             obj.liked.add(request.user)
-        return JsonResponse({'liked': liked,'count': obj.like_count})
+        return JsonResponse({'liked': liked, 'count': obj.like_count})
 
 def hello_world_view(request):
     return JsonResponse({'text': 'hello world'})
