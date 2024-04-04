@@ -16,9 +16,11 @@ $.ajax({
     }
 })
 
+let visible = 3
+
 $.ajax({
     type: 'GET',
-    url: '/data/',
+    url: `/data/${visible}/`,
     success: function(response){
         console.log(response)
         const data = response.data

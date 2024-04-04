@@ -8,7 +8,7 @@ def post_list_and_create(request):
     qs = Post.objects.all()
     return render(request, 'posts/main.html', {'qs':qs})
 
-def load_post_data_view(request):
+def load_post_data_view(request, num_posts):
     qs = Post.objects.all()
     data = []
     for obj in qs:
