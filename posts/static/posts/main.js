@@ -8,7 +8,7 @@ $.ajax({
     type: 'GET',
     url: '/hello-world/',
     success: function(response){
-        console.log(response)
+        console.log('success', response)
     },
     error: function(error){
         console.log('error', error)
