@@ -8,5 +8,9 @@ def post_list_and_create(request):
     qs = Post.objects.all()
     return render(request, 'posts/main.html', {'qs':qs})
 
+def load_post_data_view(request):
+    qs = Post.objects.all()
+    return JsonResponse({'qs':qs})
+
 def hello_world_view(request):
     return JsonResponse({'text': 'hello world'})
