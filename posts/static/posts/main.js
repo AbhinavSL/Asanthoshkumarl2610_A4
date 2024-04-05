@@ -24,9 +24,9 @@ const csrftoken = getCookie('csrftoken');
 
 const likeUnlikePosts = ()=>{
     const likeUnlikeForms = [...document.getElementsByClassName('like-unlike-forms')]
-    likeUnlikeForms.forEach(forms=> forms.addEventListener('submit', e=>{
+    likeUnlikeForms.forEach(form=> form.addEventListener('submit', e=>{
         e.preventDefault()
-        const clickedId = e.target.getAttribute('data-forms-id')
+        const clickedId = e.target.getAttribute('data-form-id')
         const clickedBtn = document.getElementById(`like-unlike-${clickedId}`)
 
         $.ajax({
@@ -58,12 +58,12 @@ const getData = () => {
             setTimeout(()=>{
                 spinnerBox.classList.add('not-visible')
                 console.log(data)
-                data.forEach(el => {
+                data.forEach(element => {
                     postsBox.innerHTML += `
                         <div class="card mb-2">
                             <div class="card-body">
-                                <h5 class="card-title">${el.title}</h5>
-                                <p class="card-text">${el.body}</p>
+                                <h5 class="card-title">${element.title}</h5>
+                                <p class="card-text">${element.body}</p>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -71,8 +71,8 @@ const getData = () => {
                                     <a href="#" class="btn btn-primary">Details</a>
                                 </div>
                                 <div class="col-2">
-                                    <form class="like-unlike-forms" data-form-id="${el.id}">
-                                        <button href="#" class="btn btn-primary" id="like-unlike-${el.id}">${el.liked ? `Unlike (${el.count})`: `Like (${el.count})`}</button>
+                                    <form class="like-unlike-forms" data-form-id="${element.id}">
+                                        <button href="#" class="btn btn-primary" id="like-unlike-${element.id}">${element.liked ? `Unlike (${element.count})`: `Like (${element.count})`}</button>
                                     </form>
                                 </div>
                             </div>
