@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     #our own apps
     'posts',
     'profiles',
-    #3rd party apps
+    # 3rd party apps
     'crispy_forms',
+    'crispy_bootstrap4',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
